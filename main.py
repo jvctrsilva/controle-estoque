@@ -1,30 +1,41 @@
+# Biblioteca sqlite3
+# -------------------
+# A biblioteca `sqlite3` é uma biblioteca nativa do Python que permite a interação
+# com bancos de dados SQLite, que são bancos de dados relacionais leves e armazenados
+# em um único arquivo no disco. Essa biblioteca fornece uma interface para executar
+# comandos SQL como criação de tabelas, inserção, atualização, exclusão e consulta
+# de dados, facilitando o desenvolvimento de aplicações que precisam de persistência
+# de dados sem a necessidade de configurar um servidor de banco de dados.
+
 from database import criar_banco
-import produto
+import produto, fornecedor, estoque, relatorios
 
 criar_banco()
 
-def menu():
+def main():
     while True:
         print("\n--- MENU PRINCIPAL ---")
-        print("1 - Criar Produto")
-        print("2 - Listar Produtos")
-        print("3 - Atualizar Produto")
-        print("4 - Excluir Produto")
+        print("1 - Gerenciar Produtos")
+        print("2 - Gerenciar Fornecedores")
+        print("3 - Gerenciar Estoque")
+        print("4 - Relatórios")
         print("0 - Sair")
 
         op = input("Escolha uma opção: ")
 
         if op == "1":
-            produto.criar_produto()
+            produto.menu_produto()
         elif op == "2":
-            produto.listar_produtos()
+            fornecedor.menu_fornecedor()
         elif op == "3":
-            produto.atualizar_produto()
+            estoque.menu_estoque()
         elif op == "4":
-            produto.excluir_produto()
+            relatorios.menu_relatorios()
         elif op == "0":
+            print("Saindo...")
             break
         else:
-            print("Opção inválida!")
+            print("Opção inválida. Tente novamente.")
 
-menu()
+if __name__ == "__main__":
+    main()
